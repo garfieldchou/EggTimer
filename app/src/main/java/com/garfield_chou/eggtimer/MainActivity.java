@@ -1,12 +1,18 @@
 package com.garfield_chou.eggtimer;
 
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import static com.garfield_chou.eggtimer.R.id.timerSeekBar;
+
 public class MainActivity extends AppCompatActivity {
+
+    long countDownStart = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         timerSeekBar.setMax(600); // max: 10 mins
         minTextView.setText("03");
         timerSeekBar.setProgress(180);
+        countDownStart = 180000;
         timerSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -28,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("Info- sec", Integer.toString(progress % 60));
                 minTextView.setText(String.format("%02d", progress / 60));
                 secTextView.setText(String.format("%02d", progress % 60));
+                countDownStart = (long)(progress * 1000);
             }
 
             @Override
@@ -40,5 +48,27 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void goClick (View view) {
+        final TextView minTextView = (TextView) findViewById(R.id.minTextView);
+        final TextView secTextView = (TextView) findViewById(R.id.secTextView);
+        Log.i("goClick", "tapped!");
+
+        new CountDownTimer(countDownStart, 1000) {
+            @Override
+            public void onTick(long millisecondsUntilDone) {
+                Log.i("Countdown to...", Long.toString(millisecondsUntilDone / 1000));
+
+                minTextView.setText(String.format("%02d", (millisecondsUntilDone /1000) / 60));
+                secTextView.setText(String.format("%02d", (millisecondsUntilDone /1000) % 60));
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
     }
 }
