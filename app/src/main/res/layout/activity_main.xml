@@ -40,7 +40,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
-        android:id="@+id/goButton" />
+        android:id="@+id/goButton"
+        android:onClick="goClick"
+        android:visibility="visible" />
 
     <Button
         android:text="Stop"
@@ -50,7 +52,7 @@
         android:layout_alignRight="@+id/goButton"
         android:layout_alignEnd="@+id/goButton"
         android:id="@+id/stopButton"
-        android:alpha="0" />
+        android:visibility="invisible" />
 
     <LinearLayout
         android:orientation="horizontal"
