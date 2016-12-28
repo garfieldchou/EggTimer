@@ -60,16 +60,18 @@ public class MainActivity extends AppCompatActivity {
     public void goClick (View view) {
         Log.i("goClick", "tapped!");
         mplayer = MediaPlayer.create(this, R.raw.airhorn);
-        timerCountDown = new CountDownTimer(countDownStart + 1000, 1000) {
+        timerCountDown = new CountDownTimer(countDownStart + 50, 1000) {
             @Override
             public void onTick(long millisecondsUntilDone) {
-                Log.i("Countdown to...", Long.toString(millisecondsUntilDone / 1000));
+                Log.i("Countdown to...", Long.toString(millisecondsUntilDone));
                 minTextView.setText(String.format("%02d", (millisecondsUntilDone /1000) / 60));
                 secTextView.setText(String.format("%02d", (millisecondsUntilDone /1000) % 60));
             }
 
             @Override
             public void onFinish() {
+                Log.i("Countdown ", "Finished");
+                secTextView.setText("00");
                 mplayer.start();
             }
         }.start();
