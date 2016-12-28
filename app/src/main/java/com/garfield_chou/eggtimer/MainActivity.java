@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     CountDownTimer timerCountDown;
     SeekBar timerSeekBar;
     TextView minTextView, secTextView;
+    Button goButton, stopButton;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,18 +74,15 @@ public class MainActivity extends AppCompatActivity {
 
         timerSeekBar.setEnabled(false);
 
-        Button goButton = (Button) findViewById(R.id.goButton);
+        goButton = (Button) findViewById(R.id.goButton);
         goButton.setVisibility(View.INVISIBLE);
 
-        Button stopButton = (Button) findViewById(R.id.stopButton);
+        stopButton = (Button) findViewById(R.id.stopButton);
         stopButton.setVisibility(View.VISIBLE);
     }
 
     public void stopClick (View view) {
-        Button stopButton = (Button) findViewById(R.id.stopButton);
         stopButton.setVisibility(View.INVISIBLE);
-
-        Button goButton = (Button) findViewById(R.id.goButton);
         goButton.setVisibility(View.VISIBLE);
         
         timerCountDown.cancel();
