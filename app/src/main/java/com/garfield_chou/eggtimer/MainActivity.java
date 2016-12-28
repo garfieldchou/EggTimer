@@ -74,6 +74,17 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("Countdown ", "Finished");
                 secTextView.setText("00");
                 mplayer.start();
+                stopButton.setVisibility(View.INVISIBLE);
+                goButton.setVisibility(View.VISIBLE);
+
+                timerCountDown.cancel();
+
+                minTextView.setText("03");
+                secTextView.setText("00");
+
+                timerSeekBar.setProgress(180);
+                countDownStart = 180000;
+                timerSeekBar.setEnabled(true);
             }
         }.start();
 
