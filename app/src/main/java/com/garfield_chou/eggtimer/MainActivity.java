@@ -14,6 +14,7 @@ import static com.garfield_chou.eggtimer.R.id.timerSeekBar;
 public class MainActivity extends AppCompatActivity {
 
     long countDownStart = 0;
+    CountDownTimer timerCountDown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,14 +57,12 @@ public class MainActivity extends AppCompatActivity {
         final TextView secTextView = (TextView) findViewById(R.id.secTextView);
         Log.i("goClick", "tapped!");
 
-        new CountDownTimer(countDownStart, 1000) {
+        timerCountDown = new CountDownTimer(countDownStart, 1000) {
             @Override
             public void onTick(long millisecondsUntilDone) {
                 Log.i("Countdown to...", Long.toString(millisecondsUntilDone / 1000));
-
                 minTextView.setText(String.format("%02d", (millisecondsUntilDone /1000) / 60));
                 secTextView.setText(String.format("%02d", (millisecondsUntilDone /1000) % 60));
-
             }
 
             @Override
@@ -79,5 +78,23 @@ public class MainActivity extends AppCompatActivity {
 
         Button stopButton = (Button) findViewById(R.id.stopButton);
         stopButton.setVisibility(View.VISIBLE);
+    }
+
+    public void stopClick (View view) {
+        Button stopButton = (Button) findViewById(R.id.stopButton);
+        stopButton.setVisibility(View.INVISIBLE);
+
+        Button goButton = (Button) findViewById(R.id.goButton);
+        goButton.setVisibility(View.VISIBLE);
+        
+        timerCountDown.cancel();
+        TextView minTextView = (TextView) findViewById(R.id.minTextView);
+        TextView secTextView = (TextView) findViewById(R.id.secTextView);
+        minTextView.setText("03");
+        secTextView.setText("00");
+        SeekBar timerSeekBar = (SeekBar) findViewById(R.id.timerSeekBar);
+        timerSeekBar.setProgress(180);
+        countDownStart = 180000;
+        timerSeekBar.setEnabled(true);
     }
 }

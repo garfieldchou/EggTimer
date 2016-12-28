@@ -52,7 +52,8 @@
         android:layout_alignRight="@+id/goButton"
         android:layout_alignEnd="@+id/goButton"
         android:id="@+id/stopButton"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:onClick="stopClick" />
 
     <LinearLayout
         android:orientation="horizontal"
