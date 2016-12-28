@@ -15,13 +15,14 @@ public class MainActivity extends AppCompatActivity {
 
     long countDownStart = 0;
     CountDownTimer timerCountDown;
+    SeekBar timerSeekBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SeekBar timerSeekBar = (SeekBar) findViewById(R.id.timerSeekBar);
+        timerSeekBar = (SeekBar) findViewById(R.id.timerSeekBar);
         final TextView minTextView = (TextView) findViewById(R.id.minTextView);
         final TextView secTextView = (TextView) findViewById(R.id.secTextView);
 
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }.start();
-        SeekBar timerSeekBar = (SeekBar) findViewById(R.id.timerSeekBar);
+
         timerSeekBar.setEnabled(false);
 
         Button goButton = (Button) findViewById(R.id.goButton);
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         TextView secTextView = (TextView) findViewById(R.id.secTextView);
         minTextView.setText("03");
         secTextView.setText("00");
-        SeekBar timerSeekBar = (SeekBar) findViewById(R.id.timerSeekBar);
+
         timerSeekBar.setProgress(180);
         countDownStart = 180000;
         timerSeekBar.setEnabled(true);
