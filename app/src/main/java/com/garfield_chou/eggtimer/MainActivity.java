@@ -1,5 +1,6 @@
 package com.garfield_chou.eggtimer;
 
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     SeekBar timerSeekBar;
     TextView minTextView, secTextView;
     Button goButton, stopButton;
+    MediaPlayer mplayer;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void goClick (View view) {
         Log.i("goClick", "tapped!");
-
+        mplayer = MediaPlayer.create(this, R.raw.airhorn);
         timerCountDown = new CountDownTimer(countDownStart + 1000, 1000) {
             @Override
             public void onTick(long millisecondsUntilDone) {
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-
+                mplayer.start();
             }
         }.start();
 
