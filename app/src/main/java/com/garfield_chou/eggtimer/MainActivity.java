@@ -16,15 +16,16 @@ public class MainActivity extends AppCompatActivity {
     long countDownStart = 0;
     CountDownTimer timerCountDown;
     SeekBar timerSeekBar;
-
+    TextView minTextView, secTextView;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         timerSeekBar = (SeekBar) findViewById(R.id.timerSeekBar);
-        final TextView minTextView = (TextView) findViewById(R.id.minTextView);
-        final TextView secTextView = (TextView) findViewById(R.id.secTextView);
+        minTextView = (TextView) findViewById(R.id.minTextView);
+        secTextView = (TextView) findViewById(R.id.secTextView);
 
         timerSeekBar.setMax(600); // max: 10 mins
         minTextView.setText("03");
@@ -54,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goClick (View view) {
-        final TextView minTextView = (TextView) findViewById(R.id.minTextView);
-        final TextView secTextView = (TextView) findViewById(R.id.secTextView);
         Log.i("goClick", "tapped!");
 
         timerCountDown = new CountDownTimer(countDownStart, 1000) {
@@ -89,8 +88,7 @@ public class MainActivity extends AppCompatActivity {
         goButton.setVisibility(View.VISIBLE);
         
         timerCountDown.cancel();
-        TextView minTextView = (TextView) findViewById(R.id.minTextView);
-        TextView secTextView = (TextView) findViewById(R.id.secTextView);
+
         minTextView.setText("03");
         secTextView.setText("00");
 
