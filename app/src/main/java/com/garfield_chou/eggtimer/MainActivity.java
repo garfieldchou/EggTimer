@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     public void goClick (View view) {
         Log.i("goClick", "tapped!");
 
-        timerCountDown = new CountDownTimer(countDownStart, 1000) {
+        timerCountDown = new CountDownTimer(countDownStart + 1000, 1000) {
             @Override
             public void onTick(long millisecondsUntilDone) {
                 Log.i("Countdown to...", Long.toString(millisecondsUntilDone / 1000));
