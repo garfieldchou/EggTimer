@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         Log.i("goClick", "tapped!");
         mplayer = MediaPlayer.create(this, R.raw.airhorn);
         timerCountDown = new CountDownTimer(countDownStart + 50, 1000) {
+
             @Override
             public void onTick(long millisecondsUntilDone) {
                 Log.i("Countdown to...", Long.toString(millisecondsUntilDone));
