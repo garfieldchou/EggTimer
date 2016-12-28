@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -70,5 +71,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }.start();
+        SeekBar timerSeekBar = (SeekBar) findViewById(R.id.timerSeekBar);
+        timerSeekBar.setEnabled(false);
+
+        Button goButton = (Button) findViewById(R.id.goButton);
+        goButton.setVisibility(View.INVISIBLE);
+
+        Button stopButton = (Button) findViewById(R.id.stopButton);
+        stopButton.setVisibility(View.VISIBLE);
     }
 }
